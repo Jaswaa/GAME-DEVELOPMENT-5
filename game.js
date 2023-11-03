@@ -1,4 +1,4 @@
-//variables and constants
+// Iteration 1: Declare variables required for this game
 const gameBody = document.getElementById("game-body");
 const $lives = document.getElementById("lives");
 var seconds = document.getElementById("timer").textContent;
@@ -10,7 +10,7 @@ const img = [
   "zombie-5.png",
   "zombie-6.png",
 ];
-// shotgun sound
+// Iteration 1.2: Add shotgun sound
 const expAudio = new Audio(
   "https://freespecialeffects.co.uk/soundfx/weapons/shotgun_3.wav"
 );
@@ -20,18 +20,19 @@ gameBody.onclick = () => {
   expAudio.currentTime = 0;
   expAudio.play();
 };
-// background sound
+// Iteration 1.3: Add background sound
+
 const backgroundSound = new Audio(
   "https://s3-us-west-2.amazonaws.com/s.cdpn.io/250758/soundtrack.mp3"
 );
 backgroundSound.play();
 backgroundSound.loop = true;
 
-//lives
+// Iteration 1.4: Add lives
 const maxlives = 4;
 var lives = 4;
 
-//Function to make a zombie
+// Iteration 2: Write a function to make a zombie
 
 function makeZombie() {
   randomImage = img[getRandomInt(0, img.length)];
@@ -44,7 +45,7 @@ function makeZombie() {
   };
 }
 
-// Function to check if the player missed a zombie
+// Iteration 3: Write a function to check if the player missed a zombie
 
 function checkCollision(zombie) {
   if (zombie.getBoundingClientRect().top <= 0) {
@@ -54,15 +55,16 @@ function checkCollision(zombie) {
   return false;
 }
 
-// Function to destroy a zombie when it is shot or missed
-
+// Iteration 4: Write a function to destroy a zombie when it is shot or missed
 function zombieDestruct(zombie) {
   zombie.style.display = "none";
   zombieId++;
   makeZombie();
 }
 
-// Timer
+  
+
+// Iteration 5: Creating timer
 
 var timer = setInterval(function () {
   seconds--;
@@ -81,12 +83,11 @@ var timer = setInterval(function () {
   }
 }, 1000);
 
-//start game by calling the first zombie
-
+// Iteration 6: Write a code to start the game by calling the first zombie
 makeZombie(zombieId);
 
-//helper function to get random integer
 
+// Iteration 7: Write the helper function to get random integer
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
